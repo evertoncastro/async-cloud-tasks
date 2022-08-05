@@ -155,3 +155,5 @@ It is also possible to run an actual function using ``run`` method of ``CloudTas
     task.run()
 
 
+
+- https://cloud.google.com/python/docs/reference/cloudtasks/latest/google.cloud.tasks_v2.services.cloud_tasks.CloudTasksClient

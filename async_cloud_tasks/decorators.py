@@ -1,5 +1,4 @@
 from functools import wraps, partial
-
 from .base import BaseTask, CloudTaskWrapper
 from .registries import registry
 

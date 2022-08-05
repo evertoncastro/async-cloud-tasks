@@ -2,7 +2,14 @@
 *.pot
 *.pyc
 __pycache__/
-local_settings.py
 db.sqlite3
-media
 .idea/
+.vscode/
+env
+
+cloudbuild.yaml
+.dockerignore
+Makefile
+test_app/async_cloud_tasks
+
+.env
