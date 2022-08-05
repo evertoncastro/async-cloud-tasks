@@ -9,7 +9,13 @@ env
 
 cloudbuild.yaml
 .dockerignore
-Makefile
+test_app/Makefile
 test_app/async_cloud_tasks
 
 .env
+
+*.egg-info
+build/
+dist/
+
+Makefile

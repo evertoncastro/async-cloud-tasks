@@ -1,0 +1,35 @@
+# pyproject.toml
+
+[build-system]
+requires = ["setuptools>=61.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+
+[tool.setuptools]
+packages = ["async_cloud_tasks"]
+
+
+[project]
+name = "async-cloud-tasks"
+version = "0.0.2"
+description = "Google Cloud Tasks to run functions as tasks (forked from github.com/GeorgeLubaretsi/django-cloud-tasks)"
+readme = "README.md"
+authors = [{ name = "Everton Castro", email = "evertoncastro.sp@gmail.com" }]
+license = { file = "LICENSE" }
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.7",
+]
+keywords = ["cloudtasks", "cloud", "tasks", "async", "defer"]
+dependencies = [
+    "google-cloud-tasks>=2.9.0"
+]
+requires-python = ">=3.7"
+
+[project.optional-dependencies]
+dev = ["pip-tools", "pytest"]
+
+[project.urls]
+Homepage = "https://github.com/evertoncastro/async-cloud-tasks"
