@@ -133,7 +133,7 @@ ASYNC_CLOUD_TASKS = {
     'gcp_project_name': project,
     'task_handler_root_url': '_tasks/',
     'service_url': 'https://dct-test-app-3evazfo34q-uc.a.run.app',
-    # 'handler_secret': 'aba'
+    'handler_secret': None
 }
 
 # This setting allows you to debug your cloud tasks by running actual task handler function locally

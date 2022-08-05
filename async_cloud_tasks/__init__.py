@@ -1,7 +1,7 @@
 from django.utils.module_loading import autodiscover_modules
 from .base import remote_task
 
-__version__ = '0.0.1'
+__version__ = '0.0.2'
 
 
 def autodiscover():
