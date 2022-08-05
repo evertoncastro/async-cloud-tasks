@@ -35,7 +35,7 @@ setup(
     author='GeorgeLubaretsi',
     url='https://github.com/GeorgeLubaretsi/django-cloud-tasks',
     packages=[
-        'django_cloud_tasks',
+        'async_cloud_tasks',
     ],
     include_package_data=True,
     install_requires=[

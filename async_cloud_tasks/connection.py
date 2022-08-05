@@ -1,4 +1,4 @@
-import googleapiclient.discovery
+from google.cloud import tasks
 
 
 class cached_property(object):
@@ -15,16 +15,22 @@ class cached_property(object):
 
 
 class GoogleCloudClient(object):
-    @cached_property
-    def client(self):
-        client = googleapiclient.discovery.build('cloudtasks', 'v2beta3')
-        return client
 
     @cached_property
-    def tasks_endpoint(self):
+    def client(self):
+        client = tasks.CloudTasksClient()
+        return client
+
+    def get_queue_path(self, project: str, location: str, queue: str):
+        return self.client.queue_path(project, location, queue)
+
+    def create_task(self, project: str, location: str, queue: str, task_content: dict):
         client = self.client
-        tasks_endpoint = client.projects().locations().queues().tasks()
-        return tasks_endpoint
+        return client.create_task(
+            parent=self.get_queue_path(project, location, queue),
+            task=task_content
+        )
 
 
 connection = GoogleCloudClient()
+
