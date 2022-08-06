@@ -11,8 +11,8 @@ packages = ["async_cloud_tasks"]
 
 [project]
 name = "async-cloud-tasks"
-version = "0.0.2"
-description = "Use Cloud Tasks to defer function execution (forked from github.com/GeorgeLubaretsi/django-cloud-tasks)"
+version = "0.0.3"
+description = "Use Cloud Tasks to easily defer functions executions"
 readme = "README.md"
 authors = [{ name = "Everton Castro", email = "evertoncastro.sp@gmail.com" }]
 license = { file = "LICENSE" }
