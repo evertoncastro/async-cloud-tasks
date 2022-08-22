@@ -1,4 +1,5 @@
 from google.cloud import tasks
+from .apps import DCTConfig
 
 
 class cached_property(object):
@@ -18,7 +19,10 @@ class GoogleCloudClient(object):
 
     @cached_property
     def client(self):
-        client = tasks.CloudTasksClient()
+        if DCTConfig.gcp_credentials() is not None:
+            client = tasks.CloudTasksClient(credentials=DCTConfig.gcp_credentials())
+        else:
+            client = tasks.CloudTasksClient()
         return client
 
     def get_queue_path(self, project: str, location: str, queue: str):
