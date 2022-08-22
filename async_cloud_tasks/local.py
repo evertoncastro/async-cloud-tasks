@@ -3,7 +3,7 @@ import json
 import logging
 import uuid
 from django.test import RequestFactory
-from .constants import HANDLER_SECRET_HEADER_NAME
+from .constants import HANDLER_CLOUDTASK_NAME, HANDLER_CLOUDTASK_QUEUE, HANDLER_SECRET_HEADER_NAME
 from .apps import DCTConfig
 
 
@@ -41,8 +41,8 @@ class EmulatedTask(object):
     @property
     def request_headers(self):
         headers = {
-            'HTTP_X_CLOUDTASKS_TASKNAME': uuid.uuid4().hex,
-            'HTTP_X_CLOUDTASKS_QUEUENAME': 'emulated'
+            HANDLER_CLOUDTASK_NAME: uuid.uuid4().hex,
+            HANDLER_CLOUDTASK_QUEUE: 'emulated'
         }
         headers[HANDLER_SECRET_HEADER_NAME] = DCTConfig.handler_secret()
         return headers

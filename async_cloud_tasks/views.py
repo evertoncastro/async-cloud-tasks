@@ -4,7 +4,7 @@ from .apps import DCTConfig
 from .registries import registry
 from .base import CloudTaskRequest
 from django.http import JsonResponse
-from .constants import HTTP_HANDLER_SECRET_HEADER_NAME
+from .constants import HANDLER_CLOUDTASK_NAME, HANDLER_SECRET_HEADER_NAME
 from django.views.decorators.csrf import csrf_exempt
 
 
@@ -13,15 +13,16 @@ logger = logging.getLogger(__name__)
 
 @csrf_exempt
 def run_task(request):
-    logger.info(f'Request body: {request.body}')
+    logger.debug(f'Request body: {request.body}')
     body = json.loads(request.body)
     request_headers = request.META
-    print(f'Header: {request_headers}')
-    task_name = request_headers.get('HTTP_X_CLOUDTASKS_TASKNAME')
+    logger.debug(f'Header: {request_headers}')
+    task_name = request_headers.get(HANDLER_CLOUDTASK_NAME)
     task_queue_name = request_headers.get('HTTP_X_CLOUDTASKS_QUEUENAME')
 
     # Pop handler key so that it won't show up in logs
-    handler_key = request_headers.pop(HTTP_HANDLER_SECRET_HEADER_NAME, None)
+    handler_key = request_headers.pop(HANDLER_SECRET_HEADER_NAME, None)
+
     logger_extra = {
         'taskName': task_name,
         'taskQueueName': task_queue_name,

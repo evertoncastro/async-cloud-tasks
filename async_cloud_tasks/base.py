@@ -4,8 +4,8 @@ import logging
 from .apps import DCTConfig
 from .connection import connection
 from .encoders import ComplexEncoder
-from .constants import HANDLER_SECRET_HEADER_NAME
-from .local import EmulatedTask, CloudTaskMockRequest
+from .constants import HANDLER_CLOUDTASK_QUEUE, HANDLER_SECRET_HEADER_NAME
+from .local import CloudTaskMockRequest, EmulatedTask
 
 
 logger = logging.getLogger(__name__)
@@ -157,7 +157,7 @@ class CloudTaskRequest(object):
     @classmethod
     def from_cloud_request(cls, request):
         request_headers = request.META
-        task_id = request_headers.get('HTTP_X_CLOUDTASKS_TASKNAME')
+        task_id = request_headers.get(HANDLER_CLOUDTASK_QUEUE)
         return cls(
             request=request,
             task_id=task_id,

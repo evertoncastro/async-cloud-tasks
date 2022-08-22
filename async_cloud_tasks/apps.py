@@ -36,3 +36,7 @@ class DCTConfig(AppConfig):
     @classmethod
     def execute_locally(cls):
         return getattr(settings, 'ASYNC_CLOUD_TASKS_EXECUTE_LOCALLY', False)
+
+    @classmethod
+    def gcp_credentials(cls):
+        return cls._settings().get('gcp_credentials', None)
